@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "dgSpecHash": "z5rYAxqEmBE=",
+  "success": true,
+  "projectFilePath": "C:\\visual projects\\trader\\src\\Trader.Core\\Trader.Core.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Георгий\\.nuget\\packages\\cryptoexchange.net\\9.10.0\\cryptoexchange.net.9.10.0.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\cryptoexchange.net.protobuf\\9.10.0\\cryptoexchange.net.protobuf.9.10.0.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.configuration\\9.0.6\\microsoft.extensions.configuration.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\9.0.6\\microsoft.extensions.configuration.abstractions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.configuration.binder\\9.0.6\\microsoft.extensions.configuration.binder.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.6\\microsoft.extensions.dependencyinjection.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.6\\microsoft.extensions.dependencyinjection.abstractions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.diagnostics\\9.0.6\\microsoft.extensions.diagnostics.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.diagnostics.abstractions\\9.0.6\\microsoft.extensions.diagnostics.abstractions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.http\\9.0.6\\microsoft.extensions.http.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.logging\\9.0.6\\microsoft.extensions.logging.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\9.0.6\\microsoft.extensions.logging.abstractions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.options\\9.0.6\\microsoft.extensions.options.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.options.configurationextensions\\9.0.6\\microsoft.extensions.options.configurationextensions.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.6\\microsoft.extensions.primitives.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\polly\\7.1.0\\polly.7.1.0.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\polly.extensions.http\\3.0.0\\polly.extensions.http.3.0.0.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\protobuf-net\\3.2.56\\protobuf-net.3.2.56.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\protobuf-net.core\\3.2.56\\protobuf-net.core.3.2.56.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\system.text.json\\9.0.6\\system.text.json.9.0.6.nupkg.sha512",
+    "C:\\Users\\Георгий\\.nuget\\packages\\jk.mexc.net\\3.10.0\\jk.mexc.net.3.10.0.nupkg.sha512"
+  ],
+  "logs": []
+}

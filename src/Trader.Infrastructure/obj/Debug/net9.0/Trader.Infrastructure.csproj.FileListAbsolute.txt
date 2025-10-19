@@ -1,0 +1,13 @@
+c:\visual projects\trader\src\Trader.Infrastructure\bin\Debug\net9.0\Trader.Infrastructure.deps.json
+c:\visual projects\trader\src\Trader.Infrastructure\bin\Debug\net9.0\Trader.Infrastructure.dll
+c:\visual projects\trader\src\Trader.Infrastructure\bin\Debug\net9.0\Trader.Infrastructure.pdb
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.csproj.AssemblyReference.cache
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.AssemblyInfoInputs.cache
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.AssemblyInfo.cs
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.csproj.CoreCompileInputs.cache
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.sourcelink.json
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.dll
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\refint\Trader.Infrastructure.dll
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\Trader.Infrastructure.pdb
+c:\visual projects\trader\src\Trader.Infrastructure\obj\Debug\net9.0\ref\Trader.Infrastructure.dll

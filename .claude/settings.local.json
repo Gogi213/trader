@@ -1,26 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dotnet build)",
-      "Bash(timeout 10 dotnet run)",
-      "Bash(dotnet clean)",
-      "Bash(dotnet list package)",
-      "Bash(dotnet nuget search \"MEXC\" --take 10)",
-      "Bash(dotnet add package MEXC.Net)",
-      "Bash(dotnet list package --include-transitive)",
-      "Bash(dotnet restore)",
-      "Bash(dotnet remove package MEXC.Net)",
-      "Bash(dotnet add package JK.Mexc.Net)",
-      "Bash(dotnet run)",
-      "Bash(tasklist)",
-      "Bash(findstr \"TradingBot\")",
-      "Bash(taskkill /F /PID 11872)",
-      "Bash(powershell -Command \"Stop-Process -Id 11872 -Force\")",
-      "Bash(timeout 60 dotnet run)",
-      "Bash(dotnet run -- --cancel-all)",
-      "Bash(timeout 90 dotnet run)",
-      "Bash(timeout 30 dotnet run)",
-      "Bash(timeout 55 dotnet run)"
+      "Bash(dotnet build \"c:\\visual projects\\trader\\Trader.sln\")",
+      "Bash(dotnet build \"c:\\visual projects\\trader\\Trader.sln\" --no-restore)",
+      "Bash(dotnet build \"c:\\visual projects\\trader\\src\\Trader.Core\\Trader.Core.csproj\" --no-restore)",
+      "Bash(dotnet run)"
     ],
     "deny": [],
     "ask": []

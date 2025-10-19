@@ -1,0 +1,17 @@
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.csproj.AssemblyReference.cache
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.GeneratedMSBuildEditorConfig.editorconfig
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.AssemblyInfoInputs.cache
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.AssemblyInfo.cs
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.csproj.CoreCompileInputs.cache
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.sourcelink.json
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Trader.ExchangeApi.deps.json
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Trader.ExchangeApi.dll
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Trader.ExchangeApi.pdb
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Mexc.Net.dll
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Mexc.Net.pdb
+c:\visual projects\trader\src\Trader.ExchangeApi\bin\Debug\net9.0\Mexc.Net.xml
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.E.34639CCB.Up2Date
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.dll
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\refint\Trader.ExchangeApi.dll
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\Trader.ExchangeApi.pdb
+c:\visual projects\trader\src\Trader.ExchangeApi\obj\Debug\net9.0\ref\Trader.ExchangeApi.dll
