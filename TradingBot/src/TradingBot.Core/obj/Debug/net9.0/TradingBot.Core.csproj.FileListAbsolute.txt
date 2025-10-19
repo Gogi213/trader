@@ -1,0 +1,12 @@
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\bin\Debug\net9.0\TradingBot.Core.deps.json
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\bin\Debug\net9.0\TradingBot.Core.dll
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\bin\Debug\net9.0\TradingBot.Core.pdb
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.csproj.AssemblyReference.cache
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.AssemblyInfoInputs.cache
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.AssemblyInfo.cs
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.csproj.CoreCompileInputs.cache
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.dll
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\refint\TradingBot.Core.dll
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.pdb
+C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\ref\TradingBot.Core.dll
