@@ -11,7 +11,16 @@
       "Bash(dotnet restore)",
       "Bash(dotnet remove package MEXC.Net)",
       "Bash(dotnet add package JK.Mexc.Net)",
-      "Bash(dotnet run)"
+      "Bash(dotnet run)",
+      "Bash(tasklist)",
+      "Bash(findstr \"TradingBot\")",
+      "Bash(taskkill /F /PID 11872)",
+      "Bash(powershell -Command \"Stop-Process -Id 11872 -Force\")",
+      "Bash(timeout 60 dotnet run)",
+      "Bash(dotnet run -- --cancel-all)",
+      "Bash(timeout 90 dotnet run)",
+      "Bash(timeout 30 dotnet run)",
+      "Bash(timeout 55 dotnet run)"
     ],
     "deny": [],
     "ask": []

@@ -55,3 +55,4 @@ C:\visual projects\trader\TradingBot\src\TradingBot.ConsoleHost\bin\Debug\net9.0
 C:\visual projects\trader\TradingBot\src\TradingBot.ConsoleHost\bin\Debug\net9.0\Microsoft.Extensions.Http.dll
 C:\visual projects\trader\TradingBot\src\TradingBot.ConsoleHost\bin\Debug\net9.0\protobuf-net.dll
 C:\visual projects\trader\TradingBot\src\TradingBot.ConsoleHost\bin\Debug\net9.0\protobuf-net.Core.dll
+c:\visual projects\trader\TradingBot\src\TradingBot.ConsoleHost\obj\Debug\net9.0\TradingBot.ConsoleHost.sourcelink.json

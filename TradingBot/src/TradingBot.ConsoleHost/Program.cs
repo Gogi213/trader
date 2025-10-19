@@ -3,6 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using TradingBot.Core.Abstractions;
+using TradingBot.Core.Domain;
 using TradingBot.Core.Services;
 using TradingBot.Core.Strategies;
 
@@ -10,8 +11,16 @@ namespace TradingBot.ConsoleHost;
 
 public static class Program
 {
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
+        // Режим очистки ордеров
+        if (args.Length > 0 && (args[0] == "--cleanup" || args[0] == "--cancel-all"))
+        {
+            await CleanupProgram.RunCleanupAsync(args);
+            return;
+        }
+
+        // Обычный режим
         CreateHostBuilder(args).Build().Run();
     }
 
@@ -21,16 +30,9 @@ public static class Program
             {
                 services.AddSingleton<ITradingStrategyService, TradingStrategyService>();
 
-                services.AddSingleton<IWebSocketConsumerService>(sp =>
-                {
-                    var logger = sp.GetRequiredService<ILogger<WebSocketConsumerService>>();
-                    var connectionString = hostContext.Configuration["ConnectionStrings:WebSocket"];
-                    if (string.IsNullOrEmpty(connectionString))
-                    {
-                        throw new InvalidOperationException("WebSocket connection string is not configured.");
-                    }
-                    return new WebSocketConsumerService(new Uri(connectionString), logger);
-                });
+                // Options
+                services.Configure<PureMarketMakingOptions>(hostContext.Configuration.GetSection(PureMarketMakingOptions.SectionName));
+                services.Configure<RiskManagementOptions>(hostContext.Configuration.GetSection(RiskManagementOptions.SectionName));
 
                 // MEXC API Integration
                 services.AddSingleton<IExchangeAdapter>(sp =>
@@ -47,11 +49,13 @@ public static class Program
                     return new MexcExchangeAdapter(apiKey, apiSecret, logger);
                 });
 
+                // Sprint 5: Risk Management & Portfolio
+                services.AddSingleton<IRiskManager, RiskManager>();
+                services.AddSingleton<IPortfolioManager, PortfolioManager>();
+                services.AddSingleton<IStateManager, JsonStateManager>();
+
                 // Pure Market Making Strategy
                 services.AddSingleton<ITradingStrategy, PureMarketMakingStrategy>();
-
-                // Testing services
-                services.AddSingleton<MexcApiTester>();
 
                 services.AddHostedService<Worker>();
             });

@@ -1,4 +1,5 @@
-using TradingBot.Core.Domain;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace TradingBot.Core.Abstractions;
 
@@ -13,18 +14,18 @@ public interface ITradingStrategy
     string Name { get; }
 
     /// <summary>
-    /// Инициализация стратегии
+    /// Инициализация стратегии (вызывается один раз при запуске)
     /// </summary>
     Task InitializeAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Основной цикл стратегии (tick)
-    /// Вызывается периодически для создания/обновления ордеров
+    /// Один тик стратегии - выполняет одну итерацию логики
+    /// Вызывается периодически внешним циклом
     /// </summary>
     Task TickAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Остановка стратегии и очистка ресурсов
+    /// Остановка стратегии (отменяет активные ордера)
     /// </summary>
     Task StopAsync(CancellationToken cancellationToken = default);
 }

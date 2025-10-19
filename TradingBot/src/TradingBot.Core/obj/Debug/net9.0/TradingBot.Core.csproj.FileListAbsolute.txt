@@ -10,3 +10,4 @@ C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\Tradin
 C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\refint\TradingBot.Core.dll
 C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.pdb
 C:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\ref\TradingBot.Core.dll
+c:\visual projects\trader\TradingBot\src\TradingBot.Core\obj\Debug\net9.0\TradingBot.Core.sourcelink.json

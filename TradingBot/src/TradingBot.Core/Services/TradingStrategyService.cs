@@ -1,132 +1,99 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
+using System.Threading;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using TradingBot.Core.Abstractions;
-using TradingBot.Core.Domain;
-using TradingBot.Core.Infrastructure.Json;
 
 namespace TradingBot.Core.Services;
 
+/// <summary>
+/// Сервис управления торговыми стратегиями
+/// Запускает и управляет жизненным циклом всех стратегий
+/// </summary>
 public class TradingStrategyService : ITradingStrategyService
 {
     private readonly ILogger<TradingStrategyService> _logger;
-    private const decimal SpreadThreshold = 0.5m;
+    private readonly IEnumerable<ITradingStrategy> _strategies;
+    private readonly List<Task> _strategyTasks = new();
+    private CancellationTokenSource? _cts;
 
-    public TradingStrategyService(ILogger<TradingStrategyService> logger)
+    public TradingStrategyService(ILogger<TradingStrategyService> logger, IEnumerable<ITradingStrategy> strategies)
     {
         _logger = logger;
+        _strategies = strategies;
     }
 
-    public void ProcessMessage(string message)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
+        _logger.LogInformation("=== Запуск Trading Strategy Service ===");
+
+        _cts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+
+        foreach (var strategy in _strategies)
+        {
+            _logger.LogInformation("Запуск стратегии: {StrategyName}", strategy.Name);
+
+            // Инициализация стратегии
+            await strategy.InitializeAsync(cancellationToken);
+
+            // Запуск основного цикла стратегии в отдельной задаче
+            var task = Task.Run(async () =>
+            {
+                while (!_cts.Token.IsCancellationRequested)
+                {
+                    try
+                    {
+                        await strategy.TickAsync(_cts.Token);
+                    }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError(ex, "Ошибка в tick стратегии {StrategyName}", strategy.Name);
+                    }
+
+                    // Задержка между тиками (10 секунд)
+                    try
+                    {
+                        await Task.Delay(TimeSpan.FromSeconds(10), _cts.Token);
+                    }
+                    catch (OperationCanceledException)
+                    {
+                        break;
+                    }
+                }
+
+                // Остановка стратегии
+                await strategy.StopAsync(CancellationToken.None);
+
+            }, _cts.Token);
+
+            _strategyTasks.Add(task);
+        }
+
+        _logger.LogInformation("Все стратегии запущены");
+    }
+
+    public async Task StopAsync(CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("Остановка Trading Strategy Service...");
+
+        _cts?.Cancel();
+
         try
         {
-            if (string.IsNullOrWhiteSpace(message))
-            {
-                _logger.LogWarning("Received empty or null message");
-                return;
-            }
-
-            var package = JsonSerializer.Deserialize(message, JsonContext.Default.SpreadDataPackage);
-
-            if (package == null)
-            {
-                _logger.LogWarning("Deserialized package is null");
-                return;
-            }
-
-            if (!package.Data.Any())
-            {
-                _logger.LogDebug("Received empty data package");
-                return;
-            }
-
-            _logger.LogDebug("Received package with {count} data rows, {fields} fields",
-                package.Data.Count, package.Fields.Count);
-
-            var spreads = ConvertToDto(package).ToList();
-
-            _logger.LogDebug("Converted {count} spread records", spreads.Count);
-
-            foreach (var spread in spreads)
-            {
-                if (spread.SpreadPercentage > SpreadThreshold)
-                {
-                    _logger.LogInformation(
-                        "TRADING SIGNAL: BUY {Symbol} on {Exchange} | Best Ask: {Price:F8} | Spread: {Spread:F4}% | Volume: {MinVol:F4}-{MaxVol:F4}",
-                        spread.Symbol, spread.Exchange, spread.BestAsk, spread.SpreadPercentage,
-                        spread.MinVolume, spread.MaxVolume);
-                }
-            }
+            await Task.WhenAll(_strategyTasks);
         }
-        catch (JsonException ex)
+        catch (OperationCanceledException)
         {
-            _logger.LogError(ex, "Failed to deserialize JSON message. Message preview: {preview}",
-                message.Length > 200 ? message.Substring(0, 200) + "..." : message);
+            _logger.LogInformation("Стратегии остановлены");
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unexpected error processing message");
+            _logger.LogError(ex, "Ошибка при остановке стратегий");
         }
-    }
 
-    private static IEnumerable<SpreadDto> ConvertToDto(SpreadDataPackage package)
-    {
-        var fieldMap = package.Fields.Select((field, index) => new { field, index })
-            .ToDictionary(x => x.field, x => x.index, StringComparer.OrdinalIgnoreCase);
-
-        foreach (var row in package.Data)
-        {
-            yield return new SpreadDto
-            {
-                Exchange = GetValue<string>(row, fieldMap, "exchange") ?? string.Empty,
-                Symbol = GetValue<string>(row, fieldMap, "symbol") ?? string.Empty,
-                BestBid = GetValue<decimal>(row, fieldMap, "bestBid"),
-                BestAsk = GetValue<decimal>(row, fieldMap, "bestAsk"),
-                SpreadPercentage = GetValue<decimal>(row, fieldMap, "spreadPercentage"),
-                MinVolume = GetValue<decimal>(row, fieldMap, "minVolume"),
-                MaxVolume = GetValue<decimal>(row, fieldMap, "maxVolume")
-            };
-        }
-    }
-
-    private static T? GetValue<T>(IReadOnlyList<object> row, IReadOnlyDictionary<string, int> fieldMap, string fieldName)
-    {
-        try
-        {
-            if (!fieldMap.TryGetValue(fieldName, out var index))
-            {
-                return default;
-            }
-
-            if (index >= row.Count)
-            {
-                return default;
-            }
-
-            var value = row[index];
-            if (value == null)
-            {
-                return default;
-            }
-
-            if (value is JsonElement element)
-            {
-                return element.Deserialize<T>();
-            }
-
-            if (value is T typedValue)
-            {
-                return typedValue;
-            }
-
-            return (T)Convert.ChangeType(value, typeof(T));
-        }
-        catch
-        {
-            return default;
-        }
+        _cts?.Dispose();
+        _logger.LogInformation("Trading Strategy Service остановлен");
     }
 }

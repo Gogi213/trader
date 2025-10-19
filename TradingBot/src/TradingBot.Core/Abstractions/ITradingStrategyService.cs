@@ -1,6 +1,11 @@
+using System.Threading;
+using System.Threading.Tasks;
+
 namespace TradingBot.Core.Abstractions;
 
 public interface ITradingStrategyService
 {
-    void ProcessMessage(string message);
+    Task StartAsync(CancellationToken cancellationToken);
+
+    Task StopAsync(CancellationToken cancellationToken);
 }
